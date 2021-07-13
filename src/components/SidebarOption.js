@@ -5,8 +5,9 @@ import { enterRoom } from '../features/appSlice';
 import {db} from "../firebase";
 
 
-const SidebarOption = ({Icon, title,addChannelOption ,id }) => {
+const SidebarOption = ({Icon, title, addChannelOption, id }) => {
     const dispatch = useDispatch(); //shoot action into the global store
+    
     
     const addChannel = () => {
          const channelName = prompt('Please enter the channel name');

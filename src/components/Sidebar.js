@@ -18,9 +18,12 @@ import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Sidebar = () => {
-
+    const [status,setStatus]=React.useState(false);
     const [channels] = useCollection(db.collection("rooms"));
     const [user] = useAuthState(auth);
+    // const onAdd = () => {
+    //     setStatus(!status);
+    // }
     return (
         <SidebarContainer>
           <SidebarHeader>
@@ -43,13 +46,16 @@ const Sidebar = () => {
           <SidebarOption Icon={FileCopyIcon} title="File browser"/>
           <SidebarOption Icon={ExpandLessIcon} title="Show less"/>
           <hr />
-          <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
+          <hide onClick={() => setStatus(!status)}>
+            <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
+          </hide>
           <hr />
-          <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
-
-          {channels?.docs.map( doc => (
-              <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
-          ))}
+         <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
+         {status? <SideHide>
+            {channels?.docs.map( doc => (
+                <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
+            ))}
+          </SideHide>:null}
         </SidebarContainer>
     )
 }
@@ -109,4 +115,9 @@ const SidebarInfo = styled.div`
         margin-right: 2px;
         color: green;
     }
+`;
+
+const SideHide = styled.div`
+`;
+const hide = styled.div`
 `;
