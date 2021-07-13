@@ -75,8 +75,21 @@ export default Chat;
 const ChatContainer = styled.div`
 flex: 0.7;
 flex-grow: 1;
-overflow-y:scroll;
 margin-top: 60px;
+
+overflow-y: auto;
+     position: relative;
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: gray;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: white;
+        border-radius: 10px;
+    }
 `;
 
 const Header = styled.div`

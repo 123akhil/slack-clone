@@ -16,7 +16,7 @@ import SidebarOption from './SidebarOption';
 import {useCollection} from "react-firebase-hooks/firestore";
 import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
-
+import CloseIcon from '@material-ui/icons/Close';
 const Sidebar = () => {
     const [status,setStatus]=React.useState(false);
     const [channels] = useCollection(db.collection("rooms"));
@@ -69,7 +69,20 @@ const SidebarContainer = styled.div`
     border-top: 1px solid #49274b;
     max-width: 260px;
     margin-top: 60px;
-    overflow-y:scroll;
+
+    overflow-y: auto;
+     position: relative;
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #3a1d3b;
+        border-radius: 20px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #49274b;
+        border-radius: 20px;
+    }
 
     >hr {
       margin-top: 10px ;
@@ -118,6 +131,20 @@ const SidebarInfo = styled.div`
 `;
 
 const SideHide = styled.div`
+     overflow-y: auto;
+     position: relative;
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: #3a1d3b;
+        border-radius: 10px;
+    }
+    &::-webkit-scrollbar-track {
+        background: #49274b;
+        border-radius: 10px;
+    }
+
 `;
 const hide = styled.div`
 `;
