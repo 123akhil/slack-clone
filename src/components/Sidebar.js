@@ -17,6 +17,8 @@ import {useCollection} from "react-firebase-hooks/firestore";
 import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
 import CloseIcon from '@material-ui/icons/Close';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+
 const Sidebar = () => {
     const [status,setStatus]=React.useState(false);
     const [channels] = useCollection(db.collection("rooms"));
@@ -47,8 +49,8 @@ const Sidebar = () => {
           <SidebarOption Icon={ExpandLessIcon} title="Show less"/>
           <hr />
           <hide onClick={() => setStatus(!status)}>
-            <SidebarOption Icon={ExpandMoreIcon} title="Channels"/>
-          </hide>
+          {status?<SidebarOption Icon={ChevronRightIcon} title="Channels"/>:<SidebarOption Icon={ExpandMoreIcon} title="Channels"/>}
+           </hide>
           <hr />
          <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
          {status? <SideHide>
@@ -76,11 +78,11 @@ const SidebarContainer = styled.div`
         width: 10px;
     }
     &::-webkit-scrollbar-thumb {
-        background: #3a1d3b;
+        background: #663e68;
         border-radius: 20px;
     }
     &::-webkit-scrollbar-track {
-        background: #49274b;
+        background: var(--slack-color);
         border-radius: 20px;
     }
 
@@ -131,20 +133,7 @@ const SidebarInfo = styled.div`
 `;
 
 const SideHide = styled.div`
-     overflow-y: auto;
-     position: relative;
-    &::-webkit-scrollbar {
-        width: 4px;
-    }
-    &::-webkit-scrollbar-thumb {
-        background: #3a1d3b;
-        border-radius: 10px;
-    }
-    &::-webkit-scrollbar-track {
-        background: #49274b;
-        border-radius: 10px;
-    }
-
 `;
+
 const hide = styled.div`
 `;
