@@ -16,7 +16,7 @@ import SidebarOption from './SidebarOption';
 import {useCollection} from "react-firebase-hooks/firestore";
 import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import CloseIcon from '@material-ui/icons/Close';
+// import CloseIcon from '@material-ui/icons/Close';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const Sidebar = () => {
