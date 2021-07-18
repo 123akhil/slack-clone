@@ -12,7 +12,7 @@ import Message from "./Message";
 //message karah
 const Chat = () => {
     const chatRef = useRef(null);
-    const roomId = useSelector(selectRoomId);
+    const roomId = useSelector(selectRoomId);//to grab(pull) the roomId from global store 
     const [roomDetails] = useDocument(
         roomId && db.collection("rooms").doc(roomId)
     );
@@ -24,8 +24,9 @@ const Chat = () => {
       chatRef?.current?.scrollIntoView({behavior: "smooth"});
     }, [roomId, loading]);
     
-     
+    
     return (
+        
         <ChatContainer>
           {roomDetails && roomMessages && (
             <>

@@ -7,16 +7,13 @@ import firebase from 'firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 const ChatInput = ({channelName , channelId, chatRef}) => {
-
     const [input, setInput] = useState('');//picking text from the inputfield
     const [user] = useAuthState(auth);
     const sendMessage = e => {
         e.preventDefault(); //prevent from refresh
-
         if(!channelId){
             return false;
         }
-
         db.collection('rooms').doc(channelId).collection('messages').add({
             message: input,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -25,7 +22,7 @@ const ChatInput = ({channelName , channelId, chatRef}) => {
         });
 
         chatRef?.current?.scrollIntoView({behavior: "smooth"});
-
+        
         setInput("");
     };
     return (

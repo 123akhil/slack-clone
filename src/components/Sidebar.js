@@ -16,8 +16,8 @@ import SidebarOption from './SidebarOption';
 import {useCollection} from "react-firebase-hooks/firestore";
 import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
-// import CloseIcon from '@material-ui/icons/Close';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+// 
+// import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const Sidebar = () => {
     const [status,setStatus]=React.useState(false);
@@ -46,23 +46,29 @@ const Sidebar = () => {
           <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
           <SidebarOption Icon={AppsIcon} title="Apps"/>
           <SidebarOption Icon={FileCopyIcon} title="File browser"/>
-          <SidebarOption Icon={ExpandLessIcon} title="Show less"/>
+          <SidebarOption Icon={ExpandLessIcon} title="Show less"/><hr />
+          <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
           <hr />
           <hide onClick={() => setStatus(!status)}>
-          {status?<SidebarOption Icon={ChevronRightIcon} title="Channels"/>:<SidebarOption Icon={ExpandMoreIcon} title="Channels"/>}
-           </hide>
-          <hr />
-         <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
-         {status? <SideHide>
-            {channels?.docs.map( doc => (
+          <SidebarOption Icon={status || true ? ExpandMoreIcon : ExpandLessIcon} status={status}  title="Channels"/>
+          </hide>
+         <Test style={{height: status?'0px':'300px'
+         }}><SideHide>
+                  {channels?.docs.map( doc => (
                 <SidebarOption key={doc.id} id={doc.id} title={doc.data().name} />
-            ))}
-          </SideHide>:null}
+        ))}
+          </SideHide></Test>
         </SidebarContainer>
     )
 }
 
 export default Sidebar
+
+const Test = styled.div`
+    display: block;
+    transition: all 0.5s;
+    overflow: hidden;
+`;
 
 const SidebarContainer = styled.div`
     color: white;
@@ -133,6 +139,7 @@ const SidebarInfo = styled.div`
 `;
 
 const SideHide = styled.div`
+      
 `;
 
 const hide = styled.div`
