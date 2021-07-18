@@ -3,8 +3,14 @@ import { useDispatch } from 'react-redux';
 import styled from "styled-components";
 import { enterRoom } from '../features/appSlice';
 import {db} from "../firebase";
+import CloseIcon from "@material-ui/icons/Close"
 
+<<<<<<< HEAD
 const SidebarOption = ({Icon, title, addChannelOption, id }) => {
+=======
+
+const SidebarOption = ({Icon, title, addChannelOption, id, status }) => {
+>>>>>>> master2
     const dispatch = useDispatch(); //shoot action into the global store
     
     
@@ -26,16 +32,28 @@ const SidebarOption = ({Icon, title, addChannelOption, id }) => {
          }
     };
 
+    const deleteChannel = (event) => {
+        event.stopPropagation();
+        if (id) {
+            db.collection('rooms').doc(id).delete()
+        }
+    }
+
     return (
         <SidebarOptionContainer
            onClick = {addChannelOption ? addChannel : selectChannel}
         >
-            {Icon && <Icon fontSize="small" style={{padding : 10}} />}  
+            {Icon && <span style={{
+                transform: status? 'rotate(-90deg)': 'none',
+                transition: 'all 0.3s'
+            }}><Icon fontSize="small" style={{ padding: 10 }} />
+                </span>}  
             {Icon ? (
               <h3>{title}</h3>
          ): (             
                 <SidebarOptionChannel>
                     <span>#</span> {title}
+                        <CloseIcon onClick={deleteChannel}/>
                 </SidebarOptionChannel>  
              
          )}  
@@ -69,7 +87,7 @@ cursor: pointer;
 
 const SidebarOptionChannel = styled.h3`
      font-weight: 300;
-     padding: 10px 0;
- 
+    display: flex;
+    align-items: center;
 `;
 

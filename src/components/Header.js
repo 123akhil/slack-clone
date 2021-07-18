@@ -62,10 +62,11 @@ const HeaderSearch = styled.div`
     background-color: #421f44;
     text-align: center;
     display: flex;
-    padding: 0 50px;
+    padding: 0 10px;
     color: grey;
     border: 1px gray solid;
-
+    align-items: center;
+    height: 30px;
     > input {
         background-color: transparent;
         border: none;
