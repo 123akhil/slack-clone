@@ -8,7 +8,7 @@ import ChatInput from "./ChatInput";
 import { useCollection, useDocument } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
 import Message from "./Message";
-
+import SearchIcon from '@material-ui/icons/Search';
 //message karah
 const Chat = () => {
     const chatRef = useRef(null);
@@ -35,7 +35,10 @@ const Chat = () => {
                   <h4><strong>#{roomDetails?.data().name}</strong></h4>
                   <StarBorderOutlinedIcon />
                </HeaderLeft>
-
+               <HeaderSearch>
+                 <SearchIcon />
+                 <input placeholder= {`Search #${roomDetails?.data().name}`} />
+                </HeaderSearch>
                <HeaderRight>
                   <p>
                      <InfoOutlinedIcon /> Details
@@ -96,8 +99,9 @@ overflow-y: auto;
 const Header = styled.div`
    display: flex;
    justify-content: space-between;
-   padding: 20px;
+   padding: 18px;
    border-bottom: 1px solid lightgray;
+   
 `;
 
 const HeaderLeft = styled.div`
@@ -110,12 +114,40 @@ const HeaderLeft = styled.div`
        margin-right: 10px;
    }
 
-   > h4 > .MuiSvgIcon-root {
-       margin-left: 10px;
-       font-size: 18px;
+      .MuiSvgIcon-root {
+       margin-left: 2px;
+       font-size: 24px;
+       cursor: pointer;
+        :hover {
+            opacity: 0.9;
+            color: yellow;
+        }
    }
 `;
+const HeaderSearch = styled.div`
+    opacity: 1;
+    border-radius: 6px;
+    background-color: transparent;
+    text-align: center;
+    display: flex;
+    padding: 0 10px;
+    margin-left: 320px;
+    color: grey;
+    border: 1px gray solid;
+    align-items: center;
+    height: 30px;
+    position: fixed;
+    > input {
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        min-width: 30vw;
+        outline: 0;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color: black;
+    }
 
+`;
 const HeaderRight = styled.div`
    > p {
        display: flex;

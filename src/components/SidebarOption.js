@@ -90,10 +90,15 @@ const SidebarOptionChannel = styled.h3`
      align-items: center;
      justify-content: space-between; 
      width: 100%;
+     background-color: #4e2750;
      > .MuiSvgIcon-root {
         display: flex; 
         padding-right:10px;      
         font-size: 16px;     
     }
+    :hover {
+     opacity: 0.9;
+     background-color: #340e36;
+ }
 `;
 

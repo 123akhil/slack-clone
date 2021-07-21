@@ -16,6 +16,7 @@ import SidebarOption from './SidebarOption';
 import {useCollection} from "react-firebase-hooks/firestore";
 import {auth, db} from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 // 
 // import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
@@ -30,7 +31,7 @@ const Sidebar = () => {
         <SidebarContainer>
           <SidebarHeader>
              <SidebarInfo>
-               <h2> CASDM BASE </h2>
+               <h2> CAS-DM </h2>
                <h3>
                    <FiberManualRecordIcon /> 
                     {user.displayName}
@@ -39,14 +40,16 @@ const Sidebar = () => {
              <CreateIcon />
           </SidebarHeader>
 
-          <SidebarOption Icon={InsertCommentIcon} title="Threads"/>
+          <SidebarOption Icon={StarBorderIcon} title="Favourites"/>
+          <hr/>
           <SidebarOption Icon={InboxIcon} title="Mentions & reactions"/>
           <SidebarOption Icon={DraftsIcon} title="Saved Items"/>
           <SidebarOption Icon={BookmarkBorderIcon} title="Channel browser"/>
-          <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
+          {/* <SidebarOption Icon={PeopleAltIcon} title="People & user groups"/>
           <SidebarOption Icon={AppsIcon} title="Apps"/>
-          <SidebarOption Icon={FileCopyIcon} title="File browser"/>
-          <SidebarOption Icon={ExpandLessIcon} title="Show less"/><hr />
+          <SidebarOption Icon={FileCopyIcon} title="File browser"/> */}
+          <SidebarOption Icon={ExpandLessIcon} title="Show less"/>
+          <hr/>
           <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
           <hr />
           <hide onClick={() => setStatus(!status)}>
@@ -93,8 +96,6 @@ const SidebarContainer = styled.div`
     }
 
     >hr {
-      margin-top: 10px ;
-      margin-bottom: 10px;
       border: 1px solid #49274b;
     }
 `;
@@ -121,6 +122,8 @@ const SidebarInfo = styled.div`
         font-size: 15px;
         font-weight: 900;
         margin-bottom: 5px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        letter-spacing: 2px;
     }
 
     > h3 {

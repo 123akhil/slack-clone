@@ -2,7 +2,6 @@ import React from 'react'
 import styled from "styled-components";
 import { Avatar } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import SearchIcon from '@material-ui/icons/Search';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
@@ -16,11 +15,9 @@ const Header = () => {
           <HeaderAvatar onClick={() => auth.signOut()}alt={user?.displayName} src ={user?.photoURL} />
           <AccessTimeIcon />
         </HeaderLeft>
-        {/* Header Search */}
-         <HeaderSearch>
-            <SearchIcon />
-            <input placeholder="Search CASDM" />
-         </HeaderSearch>
+            <Heading>
+                <h1>CAS-DM</h1>
+            </Heading>
         {/* Header Right */}
          <HeaderRight>
              <HelpOutlineIcon />
@@ -49,34 +46,19 @@ const HeaderLeft = styled.div`
     margin-left: 20px;
 
     > .MuiSvgIcon-root {
-        margin-left: auto;
-        margin-right: 30px;
+        margin-left: 150px;
+        /* margin-right: 30px; */
     } 
     
 `;
-
-const HeaderSearch = styled.div`
-    flex: 0.4;
-    opacity: 1;
-    border-radius: 6px;
-    background-color: #421f44;
-    text-align: center;
-    display: flex;
-    padding: 0 10px;
-    color: grey;
-    border: 1px gray solid;
+const Heading = styled.div`
+   >h1 {
     align-items: center;
-    height: 30px;
-    > input {
-        background-color: transparent;
-        border: none;
-        text-align: center;
-        min-width: 30vw;
-        outline: 0;
-        color: white;
-    }
-
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    letter-spacing: 2px;
+   } 
 `;
+
 
 const HeaderRight = styled.div`
      flex: 0.3;

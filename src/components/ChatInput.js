@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { auth, db } from '../firebase';
 import firebase from 'firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
-
+import AttachmentIcon from '@material-ui/icons/Attachment';
 const ChatInput = ({channelName , channelId, chatRef}) => {
     const [input, setInput] = useState('');//picking text from the inputfield
     const [user] = useAuthState(auth);
@@ -32,6 +32,7 @@ const ChatInput = ({channelName , channelId, chatRef}) => {
                 <Button hidden type='submit' onClick={sendMessage}>
                     SEND
                 </Button>
+                <AttachmentIcon />
             </form>
         </ChatInputContainer>
     )
@@ -45,6 +46,7 @@ const ChatInputContainer = styled.div`
       position: relative;
       display: flex;
       justify-content: center;
+      align-items: center;
   }
 
   > form > input {
@@ -55,8 +57,25 @@ const ChatInputContainer = styled.div`
       border-radius: 3px;
       padding: 20px;
       outline: none;
+      font-family: Georgia, 'Times New Roman', Times, serif;
   }
   > form > button {
       display: none;
   }
+  >form > .MuiSvgIcon-root {
+        position: fixed;
+        bottom:30px;
+        right: 60px;
+        font-size: 35px;
+        background-color: #4e4a4a;
+        color:darkgray;
+        padding:10px;
+        border-radius: 4px;
+        cursor: pointer;
+        :hover {
+            opacity: 0.9;
+            background-color: gray;
+            color: #3b3636;
+        }
+    } 
 `;
