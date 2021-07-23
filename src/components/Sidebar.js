@@ -2,13 +2,13 @@ import FiberManualRecordIcon from '@material-ui/icons/FiberManualRecord';
 import React from 'react';
 import styled from "styled-components";
 import CreateIcon from "@material-ui/icons/Create";
-import InsertCommentIcon from "@material-ui/icons/InsertComment";
+// import InsertCommentIcon from "@material-ui/icons/InsertComment";
 import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import BookmarkBorderIcon from "@material-ui/icons/BookmarkBorder";
-import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
-import AppsIcon from "@material-ui/icons/Apps";
-import FileCopyIcon from "@material-ui/icons/FileCopy";
+// import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
+// import AppsIcon from "@material-ui/icons/Apps";
+// import FileCopyIcon from "@material-ui/icons/FileCopy";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import AddIcon from "@material-ui/icons/Add";
@@ -52,9 +52,9 @@ const Sidebar = () => {
           <hr/>
           <SidebarOption Icon={AddIcon} addChannelOption title="Add Channel"/>
           <hr />
-          <hide onClick={() => setStatus(!status)}>
+          <Hide onClick={() => setStatus(!status)}>
           <SidebarOption Icon={status || true ? ExpandMoreIcon : ExpandLessIcon} status={status}  title="Channels"/>
-          </hide>
+          </Hide>
          <Test style={{height: status?'0px':'300px'
          }}><SideHide>
                   {channels?.docs.map( doc => (
@@ -145,5 +145,5 @@ const SideHide = styled.div`
       
 `;
 
-const hide = styled.div`
+const Hide = styled.div`
 `;
