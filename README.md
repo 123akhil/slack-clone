@@ -15,10 +15,11 @@
 
 ## Features
 
-    1.User Authentication SignUp/Signin
+    1.User Authentication Signin/LogOut
     2.Create Different Channels
-    3.Chat on Different Channels in Real time
-    4.Send Real Time messages
+    3.Delete Channels
+    4.Chat on Different Channels in Real time
+    5.Send Real Time messages
     
 ## Upcoming-updates
      
