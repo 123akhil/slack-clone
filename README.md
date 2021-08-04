@@ -19,17 +19,6 @@
     2.Create Different Channels
     3.Chat on Different Channels in Real time
     4.Send Real Time messages
-    5.Upload Images In real time and see the preview
-    6.Download Images
-    7.Search for a Particular message
-    8.See if users is online or offline
-    9.See if user is typing.
-    10.Star a Channel or private chat and add To Your Favs
-    11.Info About the Channel Created
-    12.Analytics such as top poster in the channel and Top Messages
-    13.Theme picker for users to choose different themes for the application
-    14.Edit User image crop,resize
-    15.Emoji Support
     
 ## Upcoming-updates
      
